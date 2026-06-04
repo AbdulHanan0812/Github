@@ -1,16 +1,11 @@
 
 # Calcualtor project 
 # using function and loop
-
-
-
 while True: 
  choice = input(" Choise Operation you want to perform ( + , - , / , * , ** , *** ) =  ")
 
 
-
-
- def unlim_SUM():
+ def unlim_SUM():#This Function Evalaute Sum
     
      number = int(input("How many numbers do you want to add = "))
      total = 0
@@ -23,7 +18,7 @@ while True:
 
 
 
- def unlim_dif():
+ def unlim_dif():#This Function Evalaute Minus
     num = int(input(" How many Number do you want to Minus = "))
     total = int(input("Enter 1 Number = "))
 
@@ -33,7 +28,7 @@ while True:
     print(f"The Answer is {total}")
 
 
- def unlim_mul():
+ def unlim_mul():#This Function Evalaute Multipily
     N = int(input("How many numbers do you want to multiply = "))
     total = 1
     for i in range(N):
@@ -44,18 +39,17 @@ while True:
 
 
 
-
- def unlim_divide():
+ def unlim_divide():#This Function Evalaute Divide
     X = int(input("How many numbers do you want to Divide ="))
     total = float(input("Enter 1 Number = "))
-    for i in range(1 , X):
+    for i in range( 1 ,X):
         num = float(input(f"Enter {i + 1} Number = "))
         total /=num
     print(f"The Total is {total}")
 
 
 
- def square():
+ def square():#This Function Evalaute Square
     S = int(input(" Enter Number = "))
     result = S * S
     print(result)
@@ -63,7 +57,7 @@ while True:
 
 
 
- def cube():
+ def cube():#This Function Evalaute Cube
   I = int(input("Enter Number you find Cube = "))
   Cube = I * I * I
   print(Cube) 

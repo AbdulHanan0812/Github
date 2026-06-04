@@ -1,0 +1,1 @@
+total = float(input("Enter 1 Number = "))
