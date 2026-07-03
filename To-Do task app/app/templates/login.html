@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %} To-Do Login Page {% endblock %}
+
+{% block content %}
+
+<div class="login-box">
+    <h2>Login</h2>
+    <form method="POST">
+        
+        <!-- 🌟 Yeh line lazmi hai WTForms aur security ke liye -->
+        {{ form.hidden_tag() }}
+      
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" name="username" required><br><br>
+        </div>
+        
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" required><br><br>
+        </div>
+        
+        <button type="submit" class="btn">Login</button>
+
+    </form>
+</div>
+
+{% endblock %}

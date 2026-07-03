@@ -1,3 +1,21 @@
+#-----------Imbied Voice Function-------------- 
+
+
+
+
+
+pass
+
+
+
+
+
+
+
+
+
+
+
 
 History_File = 'history.txt'
 

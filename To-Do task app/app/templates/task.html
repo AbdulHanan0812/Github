@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %} My To-Do Tasks {% endblock %}
+
+{% block content %}
+<div class="task-manager">
+    
+    <h2>Your Tasks</h2>
+    
+    <!-- Task Add Form -->
+    <div class="form-container">
+        <form method="POST" action="{{ url_for('task.add_task') }}">
+            <input type="text" name="title" placeholder="Enter task title here..." required>
+            <button type="submit" class="btn">Add Task</button>
+        </form>
+    </div>
+
+    <!-- Tasks List (Aapki CSS ke mutabiq standard layout) -->
+    <div class="table-container">
+        <ul class="task-list" style="list-style: none; padding: 0;">
+            
+            {% for single_task in tasks %}
+            <li class="task-item" style="display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid #eee;">
+                
+                <span class="task-title"><strong>{{ loop.index }}.</strong> {{ single_task.title }}</span>
+                
+                <span class="status-badge {{ single_task.status | lower }}">
+                    {{ single_task.status }}
+                </span>
+                
+                <div class="task-actions">
+                    <a href="{{ url_for('task.status_toggle', task_id=single_task.id) }}" class="btn-toggle" style="margin-right: 10px;">Toggle</a>
+                    <a href="{{ url_for('task.clear_task', task_id=single_task.id) }}" class="btn-delete" style="color: red;">Clear</a>
+                </div>
+                
+            </li>
+            {% else %}
+            <li class="no-tasks" style="padding: 20px; text-align: center; color: #888; font-style: italic;">
+                No tasks yet! Add your first task above!
+            </li>
+            {% endfor %}
+            
+        </ul>
+    </div>
+
+</div>
+{% endblock %}
