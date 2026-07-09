@@ -34,3 +34,4 @@ Follow these simple steps to set up and run the project locally:
 ```bash
 git clone [https://github.com/your-username/AI-Resume-Analyzer-project.git](https://github.com/your-username/AI-Resume-Analyzer-project.git)
 cd AI-Resume-Analyzer-project
+.
