@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired, Length, Email
 
-# 🌟 Spelling Check: Pura naam 'Registration_form' hona chahiye
+
 class Registration_form(FlaskForm):
     name = StringField("Full Name:", validators=[DataRequired()])
     email = StringField("Email:", validators=[DataRequired(), Email()])

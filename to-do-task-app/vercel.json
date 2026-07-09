@@ -1,5 +1,4 @@
 {
-  "version": 2,
   "builds": [
     {
       "src": "index.py",
@@ -7,6 +6,10 @@
     }
   ],
   "routes": [
+    {
+      "src": "/$",
+      "dest": "/auth/register"
+    },
     {
       "src": "/(.*)",
       "dest": "index.py"
