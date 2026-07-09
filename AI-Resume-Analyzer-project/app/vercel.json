@@ -2,17 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "app/app.py",
+      "src": "AI-Resume-Analyzer-project/app/app.py",
       "use": "@vercel/python"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "app/app.py"
+      "dest": "AI-Resume-Analyzer-project/app/app.py"
     }
   ]
 }
-
-
-
