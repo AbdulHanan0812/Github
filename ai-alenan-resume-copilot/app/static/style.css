@@ -1,0 +1,763 @@
+
+:root {
+    /* Background layers */
+    --bg-main: #0B0F19;            /* Sabse
+peeche wala background */
+    --bg-surface: #151B2C;         /* Cards
+/ panels ka background */
+    --bg-surface-glow: #1E263E;    /* Hover
+/ active state background */
+    /* Text colors */
+    --color-text: #E2E8F0;         /*
+Normal text */
+    --color-muted: #94A3B8;        /* Halka
+/ secondary text */
+    --color-heading: #FFFFFF;      /*
+Headings */
+    /* Brand / Accent colors (naya
+professional combo) */
+    --accent-primary: #38BDF8;         /*
+Sky blue — main accent */
+    --accent-primary-dark: #0284C7;    /*
+Button gradient ka dark end */
+    --accent-secondary: #8B5CF6;       /*
+Violet — secondary accent */
+    --accent-emerald: #10B981;         /*
+Success / matched skills */
+    --accent-crimson: #EF4444;         /*
+Errors / logout */
+    /* Glow versions (halka transparent
+accent, backgrounds ke liye) */
+    --accent-primary-glow: rgba(56, 189,
+248, 0.15);
+    --accent-emerald-glow: rgba(16, 185,
+129, 0.12);
+    --accent-secondary-glow: rgba(139, 92,
+246, 0.12);
+    --border-color: rgba(255, 255, 255,
+0.08);
+    --radius-lg: 16px;
+    --radius-md: 10px;
+    --shadow-main: 0 10px 30px -10px
+rgba(0, 0, 0, 0.7);
+    --font-stack: 'Plus Jakarta Sans',
+system-ui, -apple-system, sans-serif;
+}
+
+
+
+/* ----------------------------------------
+   2. GLOBAL RESET & BASE BODY LAYOUT
+  (login, signup, dashboard, chat,history)
+--------------------------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: var(--bg-main);
+    color: var(--color-text);
+    font-family: var(--font-stack);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+/* 
+   (login / signup) . */
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding-top: 40px;
+    padding-bottom: 60px;
+}
+/* ----------------------------------------
+------------------------------
+   3. HEADER / NAVBAR — (Dashboard,
+History, Chat )
+-------------------------------------------
+--------------------------- */
+header {
+    background-color: rgba(21, 27, 44,
+0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--bordercolor);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.nav-container {
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+header .logo {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-heading);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+}
+header .logo span {
+    background: linear-gradient(135deg,
+var(--accent-primary), var(--accentsecondary));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+/* Nav links center mein — dashboard,
+history, logout evenly spaced */
+header nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    width: 100%;
+    padding: 0 24px;
+}
+header nav a {
+    color: var(--color-muted);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: all 0.25s ease;
+}
+header nav a:hover {
+    background-color: var(--accent-primaryglow);
+    color: var(--accent-primary);
+}
+/* Logout button — special red hover taaki
+user ko warning feel ho */
+header nav a.btn-logout,
+header nav a[href*="logout"],
+header nav a[href*="Logout"] {
+    border: 1px solid rgb(255, 255, 255);
+    color: var(--accent-crimson);
+}
+header nav a.btn-logout:hover,
+header nav a[href*="logout"]:hover,
+header nav a[href*="Logout"]:hover {
+    background-color: var(--accent-
+crimson);
+    color: #FFFFFF !important;
+}
+/* ----------------------------------------
+------------------------------
+   4. WELCOME BANNER — Dashboard page
+top heading
+-------------------------------------------
+--------------------------- */
+.welcome-banner {
+    margin-bottom: 32px;
+}
+.welcome-banner h2 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--color-heading);
+}
+.welcome-banner .highlight {
+    color: var(--accent-primary);
+}
+.welcome-banner p {
+    color: var(--color-muted);
+    font-size: 15px;
+    margin-top: 4px;
+}
+/* ----------------------------------------
+------------------------------
+   5. DASHBOARD CARD — Resume upload 
+Job Description form
+-------------------------------------------
+--------------------------- */
+.card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    box-shadow: var(--shadow-main);
+    margin-bottom: 32px;
+    transition: transform 0.2s ease,
+border-color 0.2s ease;
+}
+.card-glow:focus-within {
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow: 0 0 25px var(--accentprimary-glow);
+}
+.card h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: var(--color-heading);
+}
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.form-group label {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-muted);
+}
+textarea,
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 14px 16px;
+    color: var(--color-text);
+    font-family: var(--font-stack);
+    font-size: 15px;
+    width: 100%;
+    transition: border-color 0.2s, boxshadow 0.2s;
+}
+textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+textarea:focus,
+input:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px var(--accent-
+primary-glow);
+}
+/* Resume file upload box */
+.file-upload-wrapper {
+    background-color: rgba(11, 15, 25,
+0.5);
+    border: 2px dashed var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.file-upload-wrapper p {
+    font-size: 14px;
+    color: var(--color-muted);
+    margin-bottom: 12px;
+}
+.file-upload-wrapper input[type="file"] {
+    color: var(--color-muted);
+    font-size: 14px;
+}
+/* ----------------------------------------
+------------------------------
+   6. GLOBAL BUTTON STYLE (Login, Signup,
+Analyze, Chat )
+   -------------------------------------------
+--------------------------- */
+.btn-primary,
+button,
+input[type="submit"] {
+    background: linear-gradient(135deg,
+var(--accent-primary), var(--accentprimary-dark));
+    color: #FFFFFF;
+    border: none;
+    border-radius: var(--radius-md);
+    padding: 14px 28px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 15px var(--accentprimary-glow);
+    transition: transform 0.15s ease, boxshadow 0.2s ease, opacity 0.2s ease;
+}
+.btn-primary:hover,
+button:hover,
+input[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(56, 189,
+248, 0.35);
+    opacity: 0.97;
+}
+.btn-primary:active,
+button:active,
+input[type="submit"]:active {
+    transform: translateY(0);
+}
+/* ----------------------------------------
+------------------------------
+   7. ANALYSIS RESULTS — Matched Skills /
+Missing Skills / Roadmap
+-------------------------------------------
+--------------------------- */
+.results-container {
+    animation: fadeIn 0.4s ease-out;
+}
+.section-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--color-heading);
+}
+.error-banner {
+    background-color: rgba(239, 68, 68,
+0.1);
+    border: 1px solid rgba(239, 68, 68,
+0.2);
+    color: var(--accent-crimson);
+    padding: 16px;
+    border-radius: var(--radius-md);
+    margin-bottom: 24px;
+}
+.metrics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+.metric-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+}
+.metric-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--color-heading);
+}
+.card-matched { border-top: 4px solid var(-
+-accent-emerald); }
+.card-missing { border-top: 4px solid var(-
+-accent-secondary); }
+.skills-tag-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.skills-tag-list li {
+    background-color: var(--accent-emeraldglow);
+    color: #34D399;
+    border: 1px solid rgba(16, 185, 129,
+0.2);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+}
+.skills-tag-list.missing-tags li {
+    background-color: var(--accentsecondary-glow);
+    color: #A78BFA;
+    border: 1px solid rgba(139, 92, 246,
+0.2);
+}
+/* Roadmap timeline steps */
+.roadmap-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 16px;
+}
+.timeline-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    background-color: rgba(11, 15, 25,
+0.4);
+    padding: 16px;
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--accentprimary);
+}
+.step-badge {
+    background-color: var(--bg-surfaceglow);
+    color: var(--accent-primary);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+/* Interview questions list */
+.interview-questions-list {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 16px;
+}
+.interview-questions-list li {
+    color: var(--color-text);
+    font-size: 15px;
+}
+/* ----------------------------------------
+------------------------------
+   8. CHAT TERMINAL — Resume 
+-------------------------------------------
+--------------------------- */
+.chat-workspace {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 24px;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    min-height: 650px;
+    overflow: hidden;
+}
+/* Sidebar (left side) */
+.chat-sidebar {
+    background-color: rgba(11, 15, 25,
+0.6);
+    border-right: 1px solid var(--bordercolor);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.chat-sidebar h3 {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+}
+.sidebar-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.sidebar-links a {
+    color: var(--color-muted);
+    text-decoration: none;
+    font-size: 14px;
+    padding: 10px 14px;
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    transition: all 0.2s;
+}
+.sidebar-links a:hover,
+.sidebar-links a.active {
+    background-color: var(--bg-surfaceglow);
+    color: var(--color-heading);
+}
+.sidebar-links a.active {
+    border-left: 3px solid var(--accentprimary);
+}
+.user-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 0;
+    border-top: 1px solid var(--bordercolor);
+}
+.avatar-stub {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg,
+var(--accent-primary), var(--accentsecondary));
+}
+.user-label { font-size: 11px; color: var(-
+-color-muted); }
+.user-name { font-size: 13px; font-weight:
+600; color: var(--color-heading); }
+.btn-sidebar-logout {
+    display: block;
+    background-color: rgba(239, 68, 68,
+0.12);
+    color: var(--accent-crimson);
+    text-align: center;
+    padding: 10px;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+}
+/* Right side — actual chat messages */
+.chat-main-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.chat-header {
+    padding: 24px;
+    border-bottom: 1px solid var(--bordercolor);
+}
+.chat-header h2 { font-size: 18px; font-weight: 600; color: var(--color-heading); }
+.chat-header p { font-size: 13px; color:
+var(--color-muted); }
+.chat-messages {
+    flex: 1;
+    padding: 24px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: rgba(11, 15, 25,
+0.2);
+    max-height: 440px;
+}
+.message {
+    display: flex;
+    gap: 16px;
+    max-width: 85%;
+    animation: fadeIn 0.2s ease-out;
+}
+.msg-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: var(--bg-surfaceglow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+.msg-bubble {
+    padding: 14px 18px;
+    border-radius: 12px;
+    font-size: 14.5px;
+    white-space: pre-line;
+}
+/* AI message (left side) */
+.ai-message { align-self: flex-start; }
+.ai-message .msg-avatar { background: var(-
+-accent-primary); color: #000000; }
+.ai-message .msg-bubble {
+    background-color: var(--bg-surfaceglow);
+    color: var(--color-text);
+    border-top-left-radius: 2px;
+}
+
+
+/* User message (right side) */
+.user-message { align-self: flex-end; flex-direction: row-reverse; }
+.user-message .msg-avatar { background:
+var(--accent-secondary); color: #FFFFFF; }
+.user-message .msg-bubble {
+    background: linear-gradient(135deg,
+var(--accent-primary-glow), rgba(56, 189,
+248, 0.04));
+    color: #FFFFFF;
+    border: 1px solid rgba(56, 189, 248,
+0.2);
+    border-top-right-radius: 2px;
+}
+
+
+
+/* Chat input box + send button */
+.chat-input-area {
+    padding: 24px;
+    border-top: 1px solid var(--bordercolor);
+}
+.input-form {
+    display: flex;
+    gap: 12px;
+}
+.input-form input {
+    flex: 1;
+}
+.input-form button {
+    padding: 0 24px;
+}
+/* ----------------------------------------
+------------------------------
+   9. HISTORY TIMELINE —  resume
+analyses record
+-------------------------------------------
+--------------------------- */
+.history-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.history-item-card {
+    padding: 24px;
+    margin-bottom: 0;
+}
+.history-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+.timestamp-badge {
+    font-size: 12px;
+    color: var(--accent-primary);
+    background-color: var(--accent-primaryglow);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+.collapsed-resume-preview {
+    background-color: rgba(11, 15, 25,
+0.4);
+    padding: 12px 16px;
+    border-radius: var(--radius-md);
+    font-size: 13.5px;
+    margin-bottom: 16px;
+}
+.collapsed-resume-preview strong {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: var(--color-muted);
+}
+.mini-grid {
+    margin-bottom: 0;
+    gap: 16px;
+}
+.mini-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+}
+.tag-sm {
+    font-size: 11px;
+    background-color: rgba(255, 255, 255,
+0.05);
+    padding: 2px 8px;
+    border-radius: 4px;
+    color: var(--color-text);
+}
+/* ----------------------------------------
+------------------------------
+   10. LOGIN PAGE + SIGNUP PAGE (AUTH
+MODULE)
+   
+-------------------------------------------
+--------------------------- */
+.auth-wrapper {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;   /*
+Horizontally center */
+    align-items: center;       /*
+Vertically center */
+    padding: 40px 20px;
+}
+.auth-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: var(--shadow-main);
+}
+.auth-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+.auth-header h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-heading);
+}
+.auth-header p {
+    font-size: 14px;
+    color: var(--color-muted);
+    margin-top: 4px;
+}
+.auth-btn {
+    width: 100%;
+    margin-top: 12px;
+}
+/* Login page  "Don't have an
+account? Sign up" and  "Already have
+an account? Login"  */
+.auth-footer-links {
+    margin-top: 24px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-size: 13.5px;
+    color: white;
+}
+.auth-footer-links a,
+p a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+.auth-footer-links a:hover,
+.auth-footer-links .highlight-link,
+p a:hover {
+    color:white;
+    text-decoration: underline;
+}
+.sub-text {
+    font-size: 11px;
+    color: var(--color-muted);
+    margin-top: -12px;
+    margin-bottom: 16px;
+}
+/* ----------------------------------------
+------------------------------
+   11. FOOTER —  pages 
+-------------------------------------------
+--------------------------- */
+footer {
+    border-top: 1px solid var(--bordercolor);
+    padding: 24px 0;
+    text-align: center;
+    background-color: rgba(11, 15, 25,
+0.5);
+    margin-top: auto;
+}
+footer p {
+    font-size: 13px;
+    color: var(--color-muted);
+}
+/* ----------------------------------------
+------------------------------
+   12. ANIMATIONS
+-------------------------------------------
+--------------------------- */
+@keyframes fadeIn {
+    from { opacity: 0; transform:
+translateY(8px); }
+    to   { opacity: 1; transform:
+translateY(0); }
+}
+/* ----------------------------------------
+------------------------------
+   13. RESPONSIVE 
+-------------------------------------------
+--------------------------- */
+@media (max-width: 768px) {
+    .metrics-grid,
+    .chat-workspace {
+        grid-template-columns: 1fr;
+    }
+    .chat-sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--
+border-color);
+    }
+    header nav {
+        gap: 14px;
+        flex-wrap: wrap;
+    }
+    .auth-card {
+        padding: 28px;
+    }
+}

@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+
+
+
+{% block content %}
+
+
+    <div class="sidebar">
+        <div>
+            <h3>AI Resume Pro</h3>
+                       
+        </div>
+        <div>
+            <span style="font-size: 14px; color: #888;">Logged in as: {{ user }}</span>
+            
+        </div>
+    </div>
+
+   
+    <div class="chat-container">
+        <div class="chat-header">
+            <h2>Career & Skills Advisor</h2>
+            <span style="color: #aaa; font-size: 14px;">Ask me about Roadmaps, Interview Prep, or Technical Fields!</span>
+        </div>
+
+        
+        <div class="chat-messages" id="chatBox">
+           
+            <div class="message ai-message">
+                I am your AI career mentor. Feel free to ask any questions about field selection, missing skills, or roadmaps!
+            </div>
+        </div>
+
+       
+        <div class="chat-input-area">
+            <form class="input-form" id="chatForm">
+                <input type="text" id="userInput" placeholder="Type your message here about skills or fields..." autocomplete="off" required>
+                <button type="submit" id="sendBtn">Send</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const chatForm = document.getElementById('chatForm');
+        const userInput = document.getElementById('userInput');
+        const chatBox = document.getElementById('chatBox');
+        const sendBtn = document.getElementById('sendBtn');
+
+        chatForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const messageText = userInput.value.trim();
+            if (!messageText) return;
+
+           
+            appendMessage(messageText, 'user-message');
+            userInput.value = ''; 
+            
+           
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+           
+            sendBtn.disabled = true;
+            sendBtn.innerText = "Thinking...";
+
+        
+            fetch('/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message: messageText })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Network issue detected.");
+                }
+                return response.json();
+            })
+            .then(data => {
+               
+                if (data.response) {
+                    appendMessage(data.response, 'ai-message');
+                } else if (data.error) {
+                    appendMessage("Error: " + data.error, 'ai-message');
+                }
+                
+               
+                sendBtn.disabled = false;
+                sendBtn.innerText = "Send";
+                chatBox.scrollTop = chatBox.scrollHeight;
+            })
+            .catch(error => {
+                appendMessage("System error occur ho gaya hai. Please try again later.", 'ai-message');
+                sendBtn.disabled = false;
+                sendBtn.innerText = "Send";
+            });
+        });
+
+     
+        function appendMessage(text, className) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message', className);
+            messageDiv.innerText = text;
+            chatBox.appendChild(messageDiv);
+        }
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

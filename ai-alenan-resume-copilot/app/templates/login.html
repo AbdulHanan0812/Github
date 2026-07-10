@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %} Login Page {% endblock %}
+
+
+{% block content %}
+<div class="auth-container">
+    <div-auth-card>
+        <h2>Welcome Back 👋</h2>
+        <h3>Login Here</h3>
+     
+        <form method = "POST">
+            <input type="email" name="email" placeholder="Enter Your Email"  required><br><br>
+
+            <input type="password" name="password" placeholder="Enter Your Password" required><br><br>
+        
+            <button type="submit">Login</button>
+        </form>
+    </div-auth-card>
+</div>
+<div class="forget-pass">
+    <a href="/forgot-password">Forgot Password?</a>
+</div>
+
+
+
+<div class="switch-auth">
+    don't have an account?<a href="/signup">Sign Up</a>
+</div>
+
+
+
+
+
+{% endblock %}

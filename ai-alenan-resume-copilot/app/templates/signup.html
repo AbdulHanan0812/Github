@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %} Sign Up {% endblock %}
+
+{% block content %}
+
+<div class="auth-container">
+    <div class="auth-card">
+        <h2>Create An Account </h2>
+        Already have an account? <a href="/login">Login</a>
+        
+        <form method = "POST">
+      
+        <input type="text" name="username" placeholder="Username" required><br><br>
+       
+        <input type="email" name="email" placeholder="Email" required><br><br>
+
+    
+        <input type="password" name="password" placeholder="Enter your password"  required><br><br>
+        <p class="sub-text">Use atleast 6 Character</p>
+       
+        <button type="submit">Create Account</button>
+       
+       
+    </div>
+    </form>
+</div>
+
+
+
+
+
+
+{% endblock %}
