@@ -7,7 +7,7 @@ def resume_analyzer(resume_text, user_goal):
 
     client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
-    api_key="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" 
+    OPENROUTER_API_KEY="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" 
 )
 
     is_chat_request = "Skills and Field Mentorship" in user_goal or "General" in user_goal
